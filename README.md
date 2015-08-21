@@ -43,7 +43,7 @@ Attributes
 ==========
 See attributes/default.rb for default values.
 
-default['HMMER']['version']
+default['HMMER']['version'] 
 
 License and Authors
 ===================
