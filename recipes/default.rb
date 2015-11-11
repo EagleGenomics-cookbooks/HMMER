@@ -4,6 +4,13 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 ##########################################################
+# package install
+
+package ['zlib-devel', 'tar'] do
+  action :install
+end
+
+##########################################################
 
 include_recipe 'build-essential'
 
@@ -16,13 +23,6 @@ end
 
 magic_shell_environment 'HMMER_DIR' do
   value node['HMMER']['dir']
-end
-
-##########################################################
-# package install
-
-package ['zlib-devel'] do
-  action :install
 end
 
 ##########################################################
