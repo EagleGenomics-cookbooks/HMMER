@@ -4,7 +4,7 @@ require_relative './spec_helper'
 # Required by serverspec
 set :backend, :exec
 
-describe file("#{ENV['HMMER_DIR']}") do
+describe file(ENV['HMMER_DIR']) do
   it { should be_directory }
 end
 
