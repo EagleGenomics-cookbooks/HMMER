@@ -1,10 +1,4 @@
-require 'serverspec'
-require_relative './spec_helper'
-
-# Required by serverspec
-set :backend, :exec
-
-describe file("#{ENV['HMMER_DIR']}") do
+describe file('/usr/local/hmmer-3.1b2-linux-intel-x86_64/') do
   it { should be_directory }
 end
 
@@ -51,19 +45,16 @@ end
   nhmmscan
   phmmer
 ).each do |file_executable|
-  describe command("which #{file_executable}") do
-    its(:exit_status) { should eq 0 }
+  describe file("/usr/local/hmmer-3.1b2-linux-intel-x86_64/binaries/#{file_executable}") do
+    it { should be_file }
+    it { should be_executable }
   end
 
-  describe command("#{file_executable} -h") do
-    its(:stdout) { should contain(ENV['HMMER_VERSION']) }
+  describe file("/usr/local/bin/#{file_executable}") do
+    it { should be_symlink }
   end
-end
-
-%w(
-  hmmc2
-).each do |file_executable|
-  describe command("which #{file_executable}") do
-    its(:exit_status) { should eq 0 }
+  
+  describe command("/usr/local/bin/#{file_executable} -h") do
+    its('stdout') { should match /3.1b2/ }
   end
 end

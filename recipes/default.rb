@@ -6,14 +6,22 @@
 ##########################################################
 # package install
 
-package ['zlib-devel', 'tar'] do
+include_recipe 'apt'
+ include_recipe 'build-essential'
+
+package ['tar'] do
   action :install
 end
 
-##########################################################
-
-# include_recipe 'build-essential'
-
+package 'zlib-devel' do
+  package_name case node['platform_family']
+               when 'rhel'
+                 'zlib-devel'
+               when 'debian'
+                 'zlib1g-dev'
+               end
+end
+ 
 ##########################################################
 # here for use by serverspec
 
