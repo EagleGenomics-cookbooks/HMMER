@@ -1,14 +1,4 @@
-<<<<<<< HEAD:test/integration/default/inspec/default_spec.rb
 describe file('/usr/local/hmmer-3.1b2-linux-intel-x86_64/') do
-=======
-require 'serverspec'
-require_relative './spec_helper'
-
-# Required by serverspec
-set :backend, :exec
-
-describe file(ENV['HMMER_DIR']) do
->>>>>>> bbd31c84c06599196db0dd5d5e2a122c70cddc51:test/integration/default/serverspec/default_spec.rb
   it { should be_directory }
 end
 

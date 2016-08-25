@@ -7,7 +7,7 @@
 # package install
 
 include_recipe 'apt'
- include_recipe 'build-essential'
+include_recipe 'build-essential'
 
 package ['tar'] do
   action :install
@@ -21,7 +21,7 @@ package 'zlib-devel' do
                  'zlib1g-dev'
                end
 end
- 
+
 ##########################################################
 # here for use by serverspec
 
