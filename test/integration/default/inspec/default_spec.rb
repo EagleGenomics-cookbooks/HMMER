@@ -53,8 +53,8 @@ end
   describe file("/usr/local/bin/#{file_executable}") do
     it { should be_symlink }
   end
-  
+
   describe command("/usr/local/bin/#{file_executable} -h") do
-    its('stdout') { should match /3.1b2/ }
+    its('stdout') { should match '3.1b2' }
   end
 end
